@@ -1,33 +1,29 @@
 //import liraries
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 
 // create a component
 const App = () => {
-  const [name, setName] = useState("shaun");
-  const [age, setAge] = useState("30");
-
+  const [people, setPeople] = useState([
+    { name: "shaun", key: "1" },
+    { name: "yoshi", key: "2" },
+    { name: "mario", key: "3" },
+    { name: "luigi", key: "4" },
+    { name: "peach", key: "5" },
+    { name: "toad", key: "6" },
+    { name: "bowser", key: "7" },
+  ]);
   return (
     <View style={styles.container}>
-      <Text>Enter name: </Text>
-      <TextInput
-        multiline
-        style={styles.input}
-        placeholder="e.g. JohnDoe"
-        onChangeText={(val) => setName(val)}
-      />
-
-      <Text>Enter age: </Text>
-      <TextInput
-        keyboardType='numeric'
-        style={styles.input}
-        placeholder="e.g. 99"
-        onChangeText={(val) => setAge(val)}
-      />
-
-      <Text>
-        name: {name}, age: {age}
-      </Text>
+      <ScrollView>
+        {people.map((item) => {
+          return (
+            <View key={item.key}>
+              <Text style={styles.item}>{item.name}</Text>
+            </View>
+          );
+        })}
+      </ScrollView>
     </View>
   );
 };
@@ -36,19 +32,15 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#2c3e50",
+    backgroundColor: "#fff",
+    paddingTop: 40,
+    paddingHorizontal: 20,
   },
-  buttonContainer: {
-    marginTop: 20,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#777",
-    padding: 8,
-    margin: 10,
-    width: 200,
+  item: {
+    marginTop: 24,
+    padding: 30,
+    backgroundColor: "pink",
+    fontSize: 24,
   },
 });
 
