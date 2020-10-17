@@ -8,17 +8,20 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo/dev-tools": "^0.13.53",
+    "@react-native-community/cli-debugger-ui": "^4.9.0",
     "expo": "~39.0.2",
     "expo-status-bar": "~1.0.2",
     "react": "16.13.1",
-    "react-devtools": "^4.8.2",
-    "react-devtools-core": "^4.8.2",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"
+  },
+  "resolutions": {
+    "@react-native-community/cli-debugger-ui": "^4.9.0"
   },
   "private": true
 }
