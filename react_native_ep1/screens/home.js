@@ -6,7 +6,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const Home = () => {
     return (
         <View style={styles.container}>
-            <Text>Home Screen</Text>
+            <Text style={styles.titleText}>Home Screen</Text>
         </View>
     );
 };
@@ -16,6 +16,10 @@ const styles = StyleSheet.create({
     container: {
         padding: 24
     },
+    titleText:{
+        fontFamily:'kanit-regular',
+        fontSize: 18
+    }
 });
 
 //make this component available to the app
