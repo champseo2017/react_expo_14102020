@@ -13,4 +13,8 @@ export const globalStyles = StyleSheet.create({
     marginVertical: 8,
     lineHeight: 20,
   },
+  buttonText: {
+    width: "100%",
+    justifyContent: "center",
+  },
 });

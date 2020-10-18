@@ -17,7 +17,7 @@ const getFonts = () => {
 const App = () => {
   const [fontsLoaded, setFontsLoaded] = useState(false);
   if (fontsLoaded) {
-    return <Navigator />;
+    return <Navigator/>;
   } else {
     return (
       <AppLoading startAsync={getFonts} onFinish={() => setFontsLoaded(true)} />
