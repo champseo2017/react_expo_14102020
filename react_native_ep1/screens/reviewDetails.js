@@ -6,15 +6,11 @@ import { Button } from "native-base";
 
 // create a component
 const ReviewDetails = ({ navigation }) => {
-  const pressHandler = () => {
-    navigation.goBack();
-  };
   return (
     <View style={globalStyles.container}>
-      <Text>ReviewDetails Screen</Text>
-      <Button style={globalStyles.buttonText} primary onPress={pressHandler}>
-        <Text style={globalStyles.titleText}> back to home screen </Text>
-      </Button>
+      <Text>{navigation.getParam("title")}</Text>
+      <Text>{navigation.getParam("body")}</Text>
+      <Text>{navigation.getParam("rating")}</Text>
     </View>
   );
 };
