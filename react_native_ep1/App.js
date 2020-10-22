@@ -5,7 +5,7 @@ import Home from "./screens/home";
 import About from "./screens/about";
 import ReviewDetails from "./screens/reviewDetails";
 import { AppLoading } from "expo";
-import Navigator from './routes/homeStack'
+import Navigator from './routes/drawer'
 
 const getFonts = () => {
   return Font.loadAsync({
