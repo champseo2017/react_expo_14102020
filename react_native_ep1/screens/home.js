@@ -6,13 +6,15 @@ import {
   StyleSheet,
   FlatList,
   TouchableOpacity,
+  Modal,
 } from "react-native";
 import { globalStyles } from "../styles/global";
-import { Button } from "native-base";
 import Card from "../shared/card";
+import { MaterialIcons } from "@expo/vector-icons";
 
 // create a component
-const Home = ({ navigation }) => {
+const Home = React.memo(({ navigation }) => {
+  const [modalOpen, setModalOpen] = useState(false);
   const [reviews, setReviews] = useState([
     {
       title: "Zelda, Breath of Fresh Air",
@@ -36,6 +38,23 @@ const Home = ({ navigation }) => {
 
   return (
     <View style={globalStyles.container}>
+      <Modal visible={modalOpen} animationType="slide">
+        <View style={styles.modalContent}>
+          <MaterialIcons
+            name="close"
+            size={24}
+            style={{...styles.modalToggle, ...styles.modalClose}}
+            onPress={() => setModalOpen(false)}
+          />
+          <Text>Hello from the modal :)</Text>
+        </View>
+      </Modal>
+      <MaterialIcons
+        style={styles.modalToggle}
+        name="add"
+        size={24}
+        onPress={() => setModalOpen(true)}
+      />
       <FlatList
         data={reviews}
         renderItem={({ item }) => (
@@ -50,14 +69,25 @@ const Home = ({ navigation }) => {
       />
     </View>
   );
-};
+});
 
-// const Styles = StyleSheet.create({
-//   buttonText: {
-//     width: "100%",
-//     justifyContent: "center",
-//   },
-// });
+const styles = StyleSheet.create({
+  modalToggle: {
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: "#f2f2f2",
+    padding: 10,
+    borderRadius: 10,
+    alignSelf: 'center'
+  },
+  modalClose: {
+    marginTop:20,
+    marginBottom: 0
+  },
+  modalContent: {
+    flex: 1
+  }
+});
 
 //make this component available to the app
 export default Home;

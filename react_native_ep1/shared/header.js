@@ -9,7 +9,7 @@ const Header = ({ navigation, title }) => {
     navigation.openDrawer();
   };
   return (
-    <ImageBackground style={styles.header} source={require('../assets/game_bg.png')}>
+    <View style={styles.header}>
       <MaterialIcons
         name="menu"
         size={28}
@@ -23,7 +23,7 @@ const Header = ({ navigation, title }) => {
         />
         <Text style={styles.headerText}>{title}</Text>
       </View>
-    </ImageBackground>
+    </View>
   );
 };
 
@@ -31,7 +31,7 @@ const Header = ({ navigation, title }) => {
 const styles = StyleSheet.create({
   header: {
     width: "100%",
-    height: '100%',
+    height: "100%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
