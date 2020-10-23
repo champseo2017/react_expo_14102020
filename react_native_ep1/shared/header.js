@@ -1,6 +1,6 @@
 //import liraries
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image, ImageBackground } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
 // create a component
@@ -9,17 +9,21 @@ const Header = ({ navigation, title }) => {
     navigation.openDrawer();
   };
   return (
-    <View style={styles.header}>
+    <ImageBackground style={styles.header} source={require('../assets/game_bg.png')}>
       <MaterialIcons
         name="menu"
         size={28}
         onPress={openMenu}
         style={styles.icon}
       />
-      <View>
+      <View style={styles.headerTitle}>
+        <Image
+          source={require("../assets/heart_logo.png")}
+          style={styles.headerImage}
+        />
         <Text style={styles.headerText}>{title}</Text>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -27,7 +31,7 @@ const Header = ({ navigation, title }) => {
 const styles = StyleSheet.create({
   header: {
     width: "100%",
-    height: "100%",
+    height: '100%',
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
@@ -41,6 +45,15 @@ const styles = StyleSheet.create({
   icon: {
     position: "absolute",
     left: 0,
+  },
+  headerTitle: {
+    flexDirection: "row",
+    alignItems:'center'
+  },
+  headerImage: {
+    width: 26,
+    height: 26,
+    marginHorizontal: 10
   },
 });
 
