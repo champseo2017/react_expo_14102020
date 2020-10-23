@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import { Button } from "native-base";
+import Card from "../shared/card";
 
 // create a component
 const Home = ({ navigation }) => {
@@ -41,7 +42,9 @@ const Home = ({ navigation }) => {
           <TouchableOpacity
             onPress={() => navigation.navigate("ReviewDetails", item)}
           >
-            <Text style={globalStyles.titleText}>{item.title}</Text>
+            <Card>
+              <Text style={globalStyles.titleText}>{item.title}</Text>
+            </Card>
           </TouchableOpacity>
         )}
       />
