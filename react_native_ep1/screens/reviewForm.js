@@ -12,7 +12,7 @@ const reviewSchema = yup.object({
     .string()
     .required()
     .test("is-num-1-5", "Rating must be a number 1 - 5", (val) => {
-      return parseInt(val) < 6 && parseInt(val) > 0
+      return parseInt(val) < 6 && parseInt(val) > 0;
     }),
 });
 
@@ -39,7 +39,12 @@ const ReviewForm = React.memo(({ addReview }) => {
               placeholder="Review title"
               onChangeText={props.handleChange("title")}
               value={props.values.title}
+              onBlur={props.handleBlur("title")}
             />
+
+            {props.touched.title && props.errors.title && (
+              <Text style={globalStyles.errorText}>{props.errors.title}</Text>
+            )}
 
             <TextInput
               multiline
@@ -47,7 +52,12 @@ const ReviewForm = React.memo(({ addReview }) => {
               placeholder="Review body"
               onChangeText={props.handleChange("body")}
               value={props.values.body}
+              onBlur={props.handleBlur("body")}
             />
+
+            {props.touched.body && props.errors.body && (
+              <Text style={globalStyles.errorText}>{props.errors.body}</Text>
+            )}
 
             <TextInput
               style={globalStyles.input}
@@ -55,7 +65,12 @@ const ReviewForm = React.memo(({ addReview }) => {
               onChangeText={props.handleChange("rating")}
               value={props.values.rating}
               keyboardType="numeric"
+              onBlur={props.handleBlur("rating")}
             />
+
+            {props.touched.rating && props.errors.rating && (
+              <Text style={globalStyles.errorText}>{props.errors.rating}</Text>
+            )}
 
             <Button
               title="submit"
