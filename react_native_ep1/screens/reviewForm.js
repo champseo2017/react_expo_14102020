@@ -49,6 +49,7 @@ const ReviewForm = React.memo(({ addReview }) => {
 
             <TextInput
               multiline
+              minHeight={60}
               style={globalStyles.input}
               placeholder="Review body"
               onChangeText={props.handleChange("body")}
