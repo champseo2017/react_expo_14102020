@@ -5,7 +5,7 @@ import { globalStyles } from "../styles/global";
 import { Formik } from "formik";
 
 // create a component
-const ReviewForm = () => {
+const ReviewForm = React.memo(({addReview}) => {
   return (
     <View style={globalStyles.container}>
       <Formik
@@ -14,8 +14,9 @@ const ReviewForm = () => {
           body: "",
           rating: "",
         }}
-        onSubmit={(values) => {
-          console.log(values);
+        onSubmit={(values, actions) => {
+          actions.resetForm();
+          addReview(values);
         }}
       >
         {(props) => (
@@ -53,7 +54,7 @@ const ReviewForm = () => {
       </Formik>
     </View>
   );
-};
+});
 
 // define your styles
 const styles = StyleSheet.create({

@@ -7,11 +7,14 @@ import {
   FlatList,
   TouchableOpacity,
   Modal,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import Card from "../shared/card";
 import { MaterialIcons } from "@expo/vector-icons";
-import ReviewForm from './reviewForm'
+import ReviewForm from "./reviewForm";
+import { add } from "react-native-reanimated";
 
 // create a component
 const Home = React.memo(({ navigation }) => {
@@ -37,18 +40,28 @@ const Home = React.memo(({ navigation }) => {
     },
   ]);
 
+  const addReview = (review) => {
+    review.key = Math.random().toString();
+    setReviews((currentReviews) => {
+      return [review, ...currentReviews];
+    });
+    setModalOpen(false);
+  };
+
   return (
     <View style={globalStyles.container}>
       <Modal visible={modalOpen} animationType="slide">
-        <View style={styles.modalContent}>
-          <MaterialIcons
-            name="close"
-            size={24}
-            style={{...styles.modalToggle, ...styles.modalClose}}
-            onPress={() => setModalOpen(false)}
-          />
-         <ReviewForm/>
-        </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.modalContent}>
+            <MaterialIcons
+              name="close"
+              size={24}
+              style={{ ...styles.modalToggle, ...styles.modalClose }}
+              onPress={() => setModalOpen(false)}
+            />
+            <ReviewForm addReview={addReview} />
+          </View>
+        </TouchableWithoutFeedback>
       </Modal>
       <MaterialIcons
         style={styles.modalToggle}
@@ -79,15 +92,15 @@ const styles = StyleSheet.create({
     borderColor: "#f2f2f2",
     padding: 10,
     borderRadius: 10,
-    alignSelf: 'center'
+    alignSelf: "center",
   },
   modalClose: {
-    marginTop:20,
-    marginBottom: 0
+    marginTop: 20,
+    marginBottom: 0,
   },
   modalContent: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 //make this component available to the app
